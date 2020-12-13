@@ -38,7 +38,7 @@
 ![Example screenshot](./screens/13.jpg)
 ![Example screenshot](./screens/14.jpg)
 
-### 2.6 Created "training_2" folder and  moved job B inside it and created user "builder" and allow them to Read, Build, Cancel jobs inside the folder
+### 2.6 Created  folder "training_2" and  moved job B inside it, created user "builder" and allow them to Read, Build, Cancel jobs inside the folder
 ![Example screenshot](./screens/15.jpg)
 ![Example screenshot](./screens/16.jpg)
 ![Example screenshot](./screens/17.jpg)
