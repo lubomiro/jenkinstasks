@@ -12,7 +12,7 @@
 
 ## Plugins, folders, users, bulding, testing, pushing
 
-Installed the following plugins:
+ - Installed the following plugins:
     - [Folders](https://plugins.jenkins.io/cloudbees-folder)
     - [Workspace cleanup](https://plugins.jenkins.io/ws-cleanup)
     - [Build timeout](https://plugins.jenkins.io/build-timeout)
