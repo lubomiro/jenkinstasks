@@ -1,0 +1,22 @@
+plugins:
+  - artifactId: cloudbees-folder
+    source:
+      version: latest
+  - artifactId: ws-cleanup
+    source:
+      version: latest
+  - artifactId: build-timeout
+    source:
+      version: latest
+  - artifactId: git
+    source:
+      version: latest
+  - artifactId: maven-plugin
+    source:
+      version: latest
+  - artifactId: artifactory
+    source:
+      version: latest
+  - artifactId: locale
+    source:
+      version: latest
