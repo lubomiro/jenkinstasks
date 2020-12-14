@@ -57,13 +57,13 @@
 ![Example screenshot](./screens/25.jpg)
 
 ### 3.4 Created a dynamic agent using AWS Lambda Cloud Plugin and AWS lambda jenkins agent (not working)
-#### Builded and deoloyed AWS lambda jenkins agent 
+### Builded and deoloyed AWS lambda jenkins agent 
 ![Example screenshot](./screens/26.jpg) 
 ![Example screenshot](./screens/27.jpg)
 ![Example screenshot](./screens/28.jpg)
-#### Cofigured AWS AWS Lambda Cloud 
+### Cofigured AWS AWS Lambda Cloud 
 ![Example screenshot](./screens/29.jpg)
-#### AWS lambda Agent not lunch 
+### AWS lambda Agent not lunch 
 ![Example screenshot](./screens/30.jpg)
 ![Example screenshot](./screens/error1.jpg)
 ![Example screenshot](./screens/error2.jpg)
