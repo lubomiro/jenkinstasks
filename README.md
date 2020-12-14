@@ -122,9 +122,9 @@ pipeline {
     }
 }
 ```
-### Poll SCM every 3 minutes
+### 4.1 Poll SCM every 3 minutes
 ![Example screenshot](./screens/31.jpg)
-### SCM pooling with a webhook
+### 4.2 SCM pooling with a webhook
 ![Example screenshot](./screens/32.jpg)
 ![Example screenshot](./screens/33.jpg)
 ![Example screenshot](./screens/34.jpg)
