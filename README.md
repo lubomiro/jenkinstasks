@@ -68,24 +68,64 @@
 ![Example screenshot](./screens/error1.jpg)
 ![Example screenshot](./screens/error2.jpg)
 
-
-
-
 ## 4. Pipelines
-
-- Create __Job F__ as declarative pipeline that contains the steps from __Job A__ and __Job B__. Use Petclinic source from _master_ branch of your repo.
-- Create _Jenkinsfile_ from __Job F__ pipeline and push it to _master_ branch in your repo.
-- Update __Job F__ to use Jenkinsfile from your repo.
-- Update __Job F__ to poll SCM every 2-3 minutes to run job if changes appers. Make test commit to _master_ branch and check if __Job F__ started automatically.
-- <details><summary>Optional task</summary><br>Substitute the SCM pooling with a webhook<br><br> <details><summary>Very optional task</summary><br><details><summary>We're serious, it's really very optional</summary><br> A few option here, make the pipeline trigger only if a specific branch was updated. The next level is to make the pipeline trigger only if a specific branch and specific files were updated. Keep in mind, that initially you can do it with a simple job, and then later codify it in a pipeline. Perhaps the snippet generator can help as well  <br><br> </details> </details> </details>
-- Inside of any **stage**, find the email or name of the committer, set it as a Jenkins variable. And later, just echo inside the **post** block. Later the idea might be developed into sth more, but now just to practice it.
-- Create __Job G__ as multi-branch pipeline based on __Job F__.
-  - https://www.jenkins.io/doc/book/pipeline/multibranch/
-  - https://plugins.jenkins.io/workflow-multibranch/
-- Create pipeline __Job H__ with a few parameters. The pipeline should print the values to the std out.
-- Create pipeline __Job I__ that will trigger __Job H__ with some specific parameters.
-
-
-
-
-
+###  Creating declarative pipeline as Job F that contains the steps from Job A and Job B
+```
+pipeline {
+    agent {
+    label 'jenslave'
+        }
+    tools {
+          maven "maven"
+    }
+    stages {
+        stage('Build') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']],
+                 doGenerateSubmoduleConfigurations: false, 
+                 extensions: [], 
+                 submoduleCfg: [], 
+                 userRemoteConfigs: [[url: 'https://github.com/lubomiro/petclinic.git']]])
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+             }
+        }
+        stage('Test') {
+            steps {
+                junit '**/target/surefire-reports/TEST-*.xml'
+                archiveArtifacts 'target/*.jar'
+                }
+            }
+        stage('Deploy') {
+            steps {
+                s3Upload consoleLogLevel: 'INFO', 
+                        dontSetBuildResultOnFailure: false, 
+                        dontWaitForConcurrentBuildCompletion: false, 
+                        entries: [[bucket: 'mybuilds/${JOB_NAME}-${BUILD_NUMBER}', 
+                        excludedFile: '', 
+                        flatten: false, 
+                        gzipFiles: false, 
+                        keepForever: false, 
+                        managedArtifacts: false, 
+                        noUploadOnFailure: true, 
+                        selectedRegion: 'eu-central-1', 
+                        showDirectlyInBrowser: false, 
+                        sourceFile: 'target/*.jar', 
+                        storageClass: 'STANDARD', 
+                        uploadFromSlave: true, 
+                        useServerSideEncryption: false]], 
+                        pluginFailureResultConstraint: 'FAILURE', 
+                        profileName: 'petclinic-bucket', 
+                        userMetadata: []
+            
+            }
+        }
+    }
+}
+```
+### Poll SCM every 3 minutes
+![Example screenshot](./screens/31.jpg)
+### SCM pooling with a webhook
+![Example screenshot](./screens/32.jpg)
+![Example screenshot](./screens/33.jpg)
+![Example screenshot](./screens/34.jpg)
+![Example screenshot](./screens/35.jpg)
