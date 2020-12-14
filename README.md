@@ -1,4 +1,4 @@
-# Some hands-on experience with Jenkins
+# Experience with Jenkins
 
 ## 1. Installation and expoloring Jenkins
 
