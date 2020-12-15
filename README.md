@@ -91,6 +91,7 @@
 ![Example screenshot](./screens/30.jpg)
 ![Example screenshot](./screens/error1.jpg)
 ![Example screenshot](./screens/error2.jpg)
+![Example screenshot](./screens/errorlog.jpg)
 
 ## 4. Pipelines
 
