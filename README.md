@@ -74,7 +74,7 @@
 pipeline {
     agent {
     label 'jenslave'
-        }
+    }
     tools {
           maven "maven"
     }
@@ -86,15 +86,19 @@ pipeline {
                  extensions: [], 
                  submoduleCfg: [], 
                  userRemoteConfigs: [[url: 'https://github.com/lubomiro/petclinic.git']]])
+                script {
+                env.COMMITTER = sh(script:'git log -n 1 --pretty=format:"%an"', returnStdout: true).trim()
+                env.EMAIL = sh(script:'git log -n 1 --pretty=format:"%ae"', returnStdout: true).trim()
+                }
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
-             }
+            }
         }
         stage('Test') {
             steps {
                 junit '**/target/surefire-reports/TEST-*.xml'
                 archiveArtifacts 'target/*.jar'
-                }
             }
+        }
         stage('Deploy') {
             steps {
                 s3Upload consoleLogLevel: 'INFO', 
@@ -116,7 +120,12 @@ pipeline {
                         pluginFailureResultConstraint: 'FAILURE', 
                         profileName: 'petclinic-bucket', 
                         userMetadata: []
-            
+            }
+            post{
+                always{
+                    echo "Name of the committer ${env.COMMITTER}"
+                    echo "Email of the committer ${env.EMAIL}"
+                }
             }
         }
     }
