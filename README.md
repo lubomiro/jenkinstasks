@@ -99,7 +99,7 @@ pipeline {
                 archiveArtifacts 'target/*.jar'
             }
         }
-        stage('Deploy') {
+        stage('Deploy to AWS S3') {
             steps {
                 s3Upload consoleLogLevel: 'INFO', 
                         dontSetBuildResultOnFailure: false, 
@@ -138,3 +138,29 @@ pipeline {
 ![Example screenshot](./screens/33.jpg)
 ![Example screenshot](./screens/34.jpg)
 ![Example screenshot](./screens/35.jpg)
+### 4.3 Multi-branch pipeline
+![Example screenshot](./screens/35.jpg)
+### 4.4 Pipeline parameters
+```
+pipeline {
+  agent any
+  parameters {
+  string(name: 'OWNER', defaultValue: 'Libomyr', description: 'Project owner')
+  choice(name: 'BRANCH', choices: ['main', 'qa', 'dev', 'stage'], description: 'choice branch')
+  text(name: 'INFO', defaultValue: 'Its very simple project with parametrs', description: 'Information about project')
+}
+    stages {
+        stage('Hello') {
+            steps {
+                git branch: '${BRANCH}', url: 'https://github.com/lubomiro/petclinic.git'
+                echo "Build branch ${BRANCH}"
+                echo "Owner project ${OWNER}"
+                echo "Information about this project: ${INFO}"
+            }
+        }
+    }
+}
+```
+![Example screenshot](./screens/36.jpg)
+![Example screenshot](./screens/37.jpg)
+![Example screenshot](./screens/38.jpg)
