@@ -2,7 +2,7 @@
 
 ## 1. Installation and expoloring Jenkins
 
-### 1.1 Simple job  that lists all environment variables from the host machine
+### 1.1 Simple job that lists all environment variables from the host machine
 
 ![Example screenshot](./screens/1.jpg)
 
@@ -10,14 +10,14 @@
 
 ![Example screenshot](./screens/2.jpg)
 
-### 1.3 Simple job that triggers after previous job runs successfully. Prints build number variable
+### 1.3 Simple job that triggers after previous job runs successfully and prints build number variable
 
 ![Example screenshot](./screens/3.jpg)
 ![Example screenshot](./screens/4.jpg)
 
 ## 2. Plugins, folders, users, bulding, testing, pushing
 
-### 2.1 Installed the following plugins
+### 2.1 Installation the following plugins
 
 -
   - [Folders](https://plugins.jenkins.io/cloudbees-folder)
@@ -50,7 +50,7 @@
 ![Example screenshot](./screens/13.jpg)
 ![Example screenshot](./screens/14.jpg)
 
-### 2.6 Created  folder "training_2" and  moved job B inside it, created user "builder" and allow them to Read, Build, Cancel jobs inside the folder
+### 2.6 Created folder "training_2" and  moved job B inside it, created user "builder" and allow them to Read, Build, Cancel jobs inside the folder
 
 ![Example screenshot](./screens/15.jpg)
 ![Example screenshot](./screens/16.jpg)
@@ -58,7 +58,7 @@
 
 ## 3. Parameterization
 
-### 3.1 Cloned Petclinic to main branch, created three branches: qa, stage, dev
+### 3.1 Cloned Petclinic project to main branch and created three branches: qa, stage, dev
 
 ![Example screenshot](./screens/18.jpg)
 
@@ -74,19 +74,19 @@
 ![Example screenshot](./screens/24.jpg)
 ![Example screenshot](./screens/25.jpg)
 
-### 3.4 Created a dynamic agent using AWS Lambda Cloud Plugin and AWS lambda jenkins agent (not working)
+### 3.4 Created a dynamic agent using AWS Lambda Cloud Plugin and AWS lambda jenkins agent (NOT WORKING!!!!)
 
-### Builded and deoloyed AWS lambda jenkins agent
+### Build and deploy AWS lambda jenkins agent
 
 ![Example screenshot](./screens/26.jpg)
 ![Example screenshot](./screens/27.jpg)
 ![Example screenshot](./screens/28.jpg)
 
-### Cofigured AWS AWS Lambda Cloud
+### Configuring AWS Lambda Cloud
 
 ![Example screenshot](./screens/29.jpg)
 
-### AWS lambda Agent not lunch
+### AWS lambda Agent not launching
 
 ![Example screenshot](./screens/30.jpg)
 ![Example screenshot](./screens/error1.jpg)
@@ -94,7 +94,7 @@
 
 ## 4. Pipelines
 
-### 4.1 Creating declarative pipeline as Job F that contains the steps from Job A and Job B
+### 4.1 Created declarative pipeline as Job F that contains the steps from Job A and Job B
 
 ```pipeline {
     agent {
