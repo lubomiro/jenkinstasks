@@ -163,7 +163,7 @@ pipeline {
 
 ![Example screenshot](./screens/31.jpg)
 
-### 4.3 SCM pooling with a webhook
+### 4.3 SCM pooling with a webhook (Build Authorization Token Root)
 
 ![Example screenshot](./screens/32.jpg)
 ![Example screenshot](./screens/33.jpg)
