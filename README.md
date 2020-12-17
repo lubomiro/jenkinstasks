@@ -97,7 +97,8 @@
 
 ### 4.1 Created declarative pipeline as Job F that contains the steps from Job A and Job B
 
-```pipeline {
+```Declarative pipeline
+pipeline {
     agent {
     label 'jenslave'
     }
@@ -176,7 +177,8 @@
 ![Example screenshot](./screens/35_3.jpg)
 ![Example screenshot](./screens/35_4.jpg)
 
-```triggers {
+```Generic Webhook Trigger
+triggers {
   GenericTrigger( causeString: 'Generic Cause', 
   genericVariables: [[defaultValue: '', key: 'ref', regexpFilter: '', value: '$.ref'], 
   [defaultValue: '', key: 'changed_files', regexpFilter: '', value: '$.commits[*].[\'modified\',\'added\',\'removed\'][*]']], 
@@ -194,7 +196,8 @@
 
 ### 4.6 Pipeline with parameters
 
-```pipeline {
+```Pipeline with parameters
+pipeline {
   agent any
   parameters {
   string(name: 'OWNER', defaultValue: 'Libomyr', description: 'Project owner')
