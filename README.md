@@ -169,11 +169,30 @@
 ![Example screenshot](./screens/34.jpg)
 ![Example screenshot](./screens/35.jpg)
 
-### 4.4 Multi-branch pipeline
+### 4.4 Pipeline trigger only if a specific branch and specific files were updated
+
+![Example screenshot](./screens/35_1.jpg)
+![Example screenshot](./screens/35_2.jpg)
+![Example screenshot](./screens/35_3.jpg)
+![Example screenshot](./screens/35_4.jpg)
+
+```triggers {
+  GenericTrigger( causeString: 'Generic Cause', 
+  genericVariables: [[defaultValue: '', key: 'ref', regexpFilter: '', value: '$.ref'], 
+  [defaultValue: '', key: 'changed_files', regexpFilter: '', value: '$.commits[*].[\'modified\',\'added\',\'removed\'][*]']], 
+  regexpFilterExpression: 'refs/heads/stage .*readme.md.*', 
+  regexpFilterText: '$ref $changed_files', 
+  token: 'lubomir', 
+  tokenCredentialId: ''
+  )
+}
+```
+
+### 4.5 Multi-branch pipeline
 
 ![Example screenshot](./screens/36.jpg)
 
-### 4.5 Pipeline with parameters
+### 4.6 Pipeline with parameters
 
 ```pipeline {
   agent any
