@@ -172,6 +172,7 @@ pipeline {
 
 ### 4.4 Pipeline trigger only if a specific branch and specific files were updated
 
+![Example screenshot](./screens/35_1_1.jpg)
 ![Example screenshot](./screens/35_1.jpg)
 ![Example screenshot](./screens/35_2.jpg)
 ![Example screenshot](./screens/35_3.jpg)
