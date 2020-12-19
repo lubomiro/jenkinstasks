@@ -38,12 +38,12 @@
 ![Example screenshot](./screens/7.jpg)
 ![Example screenshot](./screens/8.jpg)
 
-### 2.4 Jenkins job(Job A) that clones PetClinic and runing unit tests
+### 2.4 Jenkins job that clones PetClinic and runing unit tests (Job A)
 
 ![Example screenshot](./screens/9.jpg)
 ![Example screenshot](./screens/10.jpg)
 
-### 2.5 Jenkins job(Job B) that clones PetClinic and packages it and pushes to AWS S3
+### 2.5 Jenkins job that clones PetClinic and packages it and pushes to AWS S3 (Job B)
 
 ![Example screenshot](./screens/11.jpg)
 ![Example screenshot](./screens/12.jpg)
@@ -110,8 +110,6 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']],
                  doGenerateSubmoduleConfigurations: false, 
-                 extensions: [], 
-                 submoduleCfg: [], 
                  userRemoteConfigs: [[url: 'https://github.com/lubomiro/petclinic.git']]])
                 script {
                 env.COMMITTER = sh(script:'git log -n 1 --pretty=format:"%an"', returnStdout: true).trim()
@@ -132,7 +130,6 @@ pipeline {
                         dontSetBuildResultOnFailure: false, 
                         dontWaitForConcurrentBuildCompletion: false, 
                         entries: [[bucket: 'mybuilds/${JOB_NAME}-${BUILD_NUMBER}', 
-                        excludedFile: '', 
                         flatten: false, 
                         gzipFiles: false, 
                         keepForever: false, 
@@ -180,15 +177,16 @@ pipeline {
 
 ```Generic Webhook Trigger
 triggers {
-  GenericTrigger( causeString: 'Generic Cause', 
-  genericVariables: [[defaultValue: '', key: 'ref', regexpFilter: '', value: '$.ref'], 
-  [defaultValue: '', key: 'changed_files', regexpFilter: '', value: '$.commits[*].[\'modified\',\'added\',\'removed\'][*]']], 
-  regexpFilterExpression: 'refs/heads/stage .*readme.md.*', 
-  regexpFilterText: '$ref $changed_files', 
-  token: 'lubomir', 
-  tokenCredentialId: ''
-  )
-}
+         GenericTrigger(
+             genericVariables: [[key: 'ref', value: '$.ref'], 
+             [key: 'changed_files', value: '$.commits[*].[\'modified\',\'added\',\'removed\'][*]']], 
+             causeString: 'Triggered on $ref',
+             regexpFilterExpression: 'refs/heads/stage .*readme.md.*', 
+             regexpFilterText: '$ref $changed_files', 
+             token: 'lubomir', 
+             tokenCredentialId: ''
+             )
+    }
 ```
 
 ### 4.5 Multi-branch pipeline
