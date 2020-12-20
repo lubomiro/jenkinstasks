@@ -142,7 +142,7 @@ pipeline {
                         uploadFromSlave: true, 
                         useServerSideEncryption: false]], 
                         pluginFailureResultConstraint: 'FAILURE', 
-                        profileName: 'petclinic-bucket', 
+                        profileName: 'S3AccessRole', 
                         userMetadata: []
             }
             post{
