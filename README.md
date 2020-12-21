@@ -84,7 +84,7 @@
 ![Example screenshot](./screens/44.jpg)
 ![Example screenshot](./screens/45.jpg)
 
-### 3.4 Created a dynamic agent using AWS Lambda Cloud Plugin and AWS lambda jenkins agent (NOT WORKING!!!!)
+### 3.5 Created a dynamic agent using AWS Lambda Cloud Plugin and AWS lambda jenkins agent (NOT WORKING!!!!)
 
 ### Build and deploy AWS lambda jenkins agent
 
