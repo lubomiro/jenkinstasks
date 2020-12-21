@@ -74,6 +74,16 @@
 ![Example screenshot](./screens/24.jpg)
 ![Example screenshot](./screens/25.jpg)
 
+### 3.4 Creating a dynamic agent using Amazon EC2 Plugin
+
+![Example screenshot](./screens/39.jpg)
+![Example screenshot](./screens/40.jpg)
+![Example screenshot](./screens/41.jpg)
+![Example screenshot](./screens/42.jpg)
+![Example screenshot](./screens/43.jpg)
+![Example screenshot](./screens/44.jpg)
+![Example screenshot](./screens/45.jpg)
+
 ### 3.4 Created a dynamic agent using AWS Lambda Cloud Plugin and AWS lambda jenkins agent (NOT WORKING!!!!)
 
 ### Build and deploy AWS lambda jenkins agent
